@@ -1,6 +1,5 @@
-package com.weta.interview.cache;
+package com.weta.interview.models.cache;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -24,23 +23,34 @@ public class MemCache implements Cache {
     }
 
     @Override
-    public Boolean removeAll(List<Object> keys) {
+    public Boolean removeAll() {
+        // TODO:  Connect to Memcache using predefined client
         mockCache.clear();
         return true;
     }
 
     @Override
+    public Boolean remove(Object key) {
+        // TODO:  Connect to Memcache using predefined client
+        mockCache.remove(key);
+        return true;
+    }
+
+    @Override
     public Set<Object> keys() {
+        // TODO:  Connect to Memcache using predefined client
         return mockCache.keySet();
     }
 
     @Override
     public Collection<Object> values() {
+        // TODO:  Connect to Memcache using predefined client
         return mockCache.values();
     }
 
     @Override
     public Set<Map.Entry<Object, Object>> entrySet() {
+        // TODO:  Connect to Memcache using predefined client
         return mockCache.entrySet();
     }
 }

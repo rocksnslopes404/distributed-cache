@@ -6,12 +6,9 @@ import java.security.DigestException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Md5Hash implements Hash  {
+public class JavaHash implements Hash  {
     @Override
     public Integer hash(Object value) throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException {
-        byte[] bytesOfMessage = value.toString().getBytes("UTF-8");
-
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        return ByteBuffer.wrap(md.digest(bytesOfMessage)).getInt();
+        return value.hashCode();
     }
 }

@@ -1,4 +1,4 @@
-package com.weta.interview.cache;
+package com.weta.interview.models.cache;
 
 import com.weta.interview.constants.NodeType;
 import com.weta.interview.models.AbstractFactory;

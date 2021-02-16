@@ -1,10 +1,11 @@
 package com.weta.interview.models;
 
-import com.weta.interview.cache.Cache;
-import com.weta.interview.cache.CacheFactory;
+import com.weta.interview.models.cache.Cache;
+import com.weta.interview.models.cache.CacheFactory;
 import com.weta.interview.constants.NodeType;
 import com.weta.interview.exceptions.InvalidNodeException;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class Node {
@@ -19,6 +20,7 @@ public class Node {
         this.hostname = builder.hostname;
         this.port = builder.port;
         this.type = builder.type;
+        this.cache = builder.cache;
     }
 
     public UUID getNodeId() {
@@ -42,6 +44,14 @@ public class Node {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node node = (Node) o;
+        return port == node.port && Objects.equals(nodeId, node.nodeId) && Objects.equals(hostname, node.hostname) && type == node.type;
+    }
+
+    @Override
     public String toString() {
         return "Node{" +
                 "nodeId=" + nodeId +
@@ -61,7 +71,7 @@ public class Node {
 
         public NodeBuilder() {
         }
-        public NodeBuilder age(UUID nodeId) {
+        public NodeBuilder nodeId(UUID nodeId) {
             this.nodeId = nodeId;
             return this;
         }
@@ -79,7 +89,7 @@ public class Node {
             return this;
         }
 
-        public Node create() throws InvalidNodeException {
+        public Node build() throws InvalidNodeException {
             Node node =  new Node(this);
             if (validateNode(node))
                 return node;

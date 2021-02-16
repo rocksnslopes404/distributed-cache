@@ -23,4 +23,9 @@ public class NodeManagerSingleton {
         }
         return instance;
     }
+
+    public static synchronized NodeManagerSingleton reset() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException {
+        instance = new NodeManagerSingleton();
+        return instance;
+    }
 }
