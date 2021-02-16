@@ -15,9 +15,13 @@ All associated code can be found at the end of this document. You can adapt/exte
 Implement a distributed caching mechanism using a consistent hashing algorithm. 
 It is required that a client can cache, retrieve and invalidate keys from the distributed cache. It is also  required that different caching backends can be used. You should not implement the backend  connectors, but you can implement a dummy plain old Java object backend for example. 
 To complete the basic task, it is safe to assume that: 
+
 • All backend caches are an instance of the same application. ie.: they are all memcached or redis etc 
+
 • The caching backend will be known at compile time 
+
 • The cache size is static, and there are no failures at all. 
+
 • Consistent hashing replicas are not required (ie.: each node has only one point on the unit  circle)
 
 ###### **Extension**
