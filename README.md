@@ -46,20 +46,36 @@ The aim of this part is to further increase how dynamic the caching infrastructu
 The back end caches are no longer homogeneous. You will need to be able to use the NodeType  enum value on the node to instantiate various backend connectors. There is no need to implement  the connectors. Failures occur. This includes hardware, software and network failures. Your code can  no longer assume that NodeEventHandler is called every time a node has failed. It is still safe to  assume that NodeEventHandler will be called every time a node is added. When a new node is  added, you should transfer to it the keys it should be handling that already exist in other nodes, and  invalidate those keys in the other nodes. When anode is shutting down, you should transfer from it  all to the nodes that will be handling them once the node is removed 
 
 Associated code 
+
 public interface NodeEventHandler { 
+
  /* 
  * Difference between nodeRemoved and nodeShuttingDown is that nodeRemoved means the  * node is down already, while nodeShuttingDown signals the intent to shutdown.  * nodeShuttingDown is only required in the challenge portion 
  */ 
+ 
  void nodeAdded(Node node); 
+ 
  void nodeRemoved(Node node); 
+ 
  void nodeShuttingDown(Node node); 
+ 
 } 
+
 public class Node { 
+
  private UUID nodeId; 
+ 
  private String hostname; 
+ 
  private int port; 
+ 
  private NodeType type 
+ 
 } 
+
 public enum NodeType { 
+
  // Example: REDIS, MEMCACHE, ... 
+ 
 }
+
