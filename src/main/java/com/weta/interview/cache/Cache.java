@@ -1,8 +1,15 @@
 package com.weta.interview.cache;
 
-public class Cache {
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-    public static void main(String args[])  {
-        System.out.println("Hello World");
-    }
+public interface Cache {
+    Boolean put(Object key, Object value);
+    Object get(Object key);
+    Boolean removeAll(List<Object> keys);
+    Set<Object> keys();
+    Collection<Object> values();
+    Set<Map.Entry<Object, Object>> entrySet();
 }
