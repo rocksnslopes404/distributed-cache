@@ -1,5 +1,6 @@
 package com.weta.interview.handlers;
 
+import com.weta.interview.exceptions.NetworkFailureException;
 import com.weta.interview.models.Node;
 import com.weta.interview.models.NodeManagerSingleton;
 
@@ -13,7 +14,7 @@ import java.util.Set;
 public class CacheNodeEventHandler implements NodeEventHandler{
 
     @Override
-    public void nodeAdded(Node node) throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException {
+    public void nodeAdded(Node node) throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, NetworkFailureException {
         NodeManagerSingleton mgr = NodeManagerSingleton.getInstance();
 
         // Add the new node and re-distribute cache entries from adjacent nodes
@@ -35,7 +36,7 @@ public class CacheNodeEventHandler implements NodeEventHandler{
     }
 
     @Override
-    public void nodeRemoved(Node node) throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException {
+    public void nodeRemoved(Node node) throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, NetworkFailureException {
         NodeManagerSingleton mgr = NodeManagerSingleton.getInstance();
         mgr.nodes.remove(node);
 

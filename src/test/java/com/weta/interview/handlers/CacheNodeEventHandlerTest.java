@@ -2,6 +2,7 @@ package com.weta.interview.handlers;
 
 import com.weta.interview.constants.NodeType;
 import com.weta.interview.exceptions.InvalidNodeException;
+import com.weta.interview.exceptions.NetworkFailureException;
 import com.weta.interview.models.Node;
 import com.weta.interview.models.NodeManagerSingleton;
 import org.junit.jupiter.api.Assertions;
@@ -22,7 +23,7 @@ public class CacheNodeEventHandlerTest {
     CacheNodeEventHandler handler = new CacheNodeEventHandler();
 
     @Test
-    public void SimpleCacheDistributionTest() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, InvalidNodeException {
+    public void SimpleCacheDistributionTest() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, InvalidNodeException, NetworkFailureException {
         UUID uuid = UUID.randomUUID();
         String hostname = "weta-cache-redis-1";
         Integer port = 6379;
@@ -63,7 +64,7 @@ public class CacheNodeEventHandlerTest {
     }
 
     @Test
-    public void HandlerAddTest() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, InvalidNodeException {
+    public void HandlerAddTest() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, InvalidNodeException, NetworkFailureException {
         UUID uuid = UUID.randomUUID();
         String hostname = "weta-cache-redis-1";
         Integer port = 6379;
@@ -117,7 +118,7 @@ public class CacheNodeEventHandlerTest {
     }
 
     @Test
-    public void HandlerRemoveTest() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, InvalidNodeException {
+    public void HandlerRemoveTest() throws UnsupportedEncodingException, NoSuchAlgorithmException, DigestException, InvalidNodeException, NetworkFailureException {
         UUID uuid = UUID.randomUUID();
         String hostname = "weta-cache-redis-1";
         Integer port = 6379;
