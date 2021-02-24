@@ -1,5 +1,6 @@
 package com.weta.interview.constants;
 
 public enum HashType {
-    MD5
+    MD5,
+    JAVA
 }

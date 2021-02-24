@@ -11,6 +11,8 @@ public class HashFactory implements AbstractFactory<Hash> {
         switch ((HashType)hashType)  {
             case MD5:
                 return new Md5Hash();
+            case JAVA:
+                return new JavaHash();
         }
         return null;
     }
